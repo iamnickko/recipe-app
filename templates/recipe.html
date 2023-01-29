@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ recipe.title }}</title>
-</head>
-<body>
+<!--    define base template    -->
+{% extends "layout.html" %}
+
+<!--    inherit base template <head>    -->
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+
 <h1>{{ recipe.title }}</h1>
-</body>
-</html>
+<h2>Ingredients</h2>
+<p>{{ recipe.ingredients }}</p>
+<h2>Instructions</h2>
+<p>{{ recipe.instructions }}</p>
+{% endblock %}

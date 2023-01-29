@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, request
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -18,6 +19,12 @@ class Recipe(db.Model):
 
 with app.app_context():
     db.create_all()
+
+
+@app.context_processor
+def inject_year():
+    year = datetime.today().year
+    return dict(year=year)
 
 
 @app.route("/")

@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add a Recipe</title>
-</head>
-<body>
+<!--    define base template    -->
+{% extends "layout.html" %}
+
+<!--    inherit base template <head>    -->
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+<!--    add.html content begins -->
+{% block content %}
 <h1>Add a Recipe</h1>
 <form action="" method="POST">
     <label for="title">Title:</label>
@@ -15,5 +18,4 @@
     <input type="text" name="instructions">
     <button type="submit">Submit</button>
 </form>
-</body>
-</html>
+{% endblock %}
