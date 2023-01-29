@@ -9,14 +9,36 @@
 </head>
 <body>
 <h1>Recipes</h1>
+
 {% if all_recipes == []: %}
 <p>There are no recipes</p>
+{% else %}
+
+<table>
+    <thead>
+    <tr>
+        <th>Recipes</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for recipe in all_recipes %}
+    <tr>
+        <td>
+            <a href="{{ url_for('recipe_detail', id=recipe.id) }}">{{ recipe.title }} {{ recipe.id }}</a>
+        </td>
+        <td>
+            <a href="">Edit</a>
+
+        </td>
+        <td>
+            <a href="{{ url_for('delete', id=recipe.id) }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
 {% endif %}
-{% for recipe in all_recipes %}
-<li>
-    <a href="{{ url_for('recipe_detail', id=recipe.id) }}">{{ recipe.title }} {{ recipe.id }}</a> | <a href="{{ url_for('delete', id=recipe.id) }}">Delete</a>
-</li>
-{% endfor %}
+
 <a href="{{ url_for('add_recipe') }}">Add a recipe</a>
 </body>
 </html>
