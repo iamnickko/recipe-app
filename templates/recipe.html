@@ -8,9 +8,30 @@
 
 {% block content %}
 
-<h1>{{ recipe.title }}</h1>
-<h2>Ingredients</h2>
-<p>{{ recipe.ingredients }}</p>
-<h2>Instructions</h2>
-<p>{{ recipe.instructions }}</p>
+<div class="row my-5">
+    <div class="col">
+        <h1>{{ recipe.title }}</h1>
+    </div>
+</div>
+
+<div class="row my-5">
+    <div class="col px-3">
+        <h2>Ingredients</h2>
+        <p>{{ recipe.ingredients }}</p>
+    </div>
+</div>
+
+<div class="row my-5">
+    <div class="col">
+        <h2>Instructions</h2>
+        <p>{{ recipe.instructions }}</p>
+    </div>
+</div>
+
+<div class="row my-5">
+    <div class="col">
+        <a href="{{ url_for('home')}}">Return to recipe list</a>
+    </div>
+</div>
+
 {% endblock %}

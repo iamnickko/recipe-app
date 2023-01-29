@@ -8,36 +8,46 @@
 
 <!--    index.html content to add to base template  -->
 {% block content %}
-<h1>Recipes</h1>
+<div class="row my-5">
+    <div class="col">
+        <h1>Recipes</h1>
+    </div>
+</div>
+<div class="row my-5">
+    <div class="col">
+        {% if all_recipes == []: %}
+        <p>There are no recipes</p>
+        {% else %}
 
-{% if all_recipes == []: %}
-<p>There are no recipes</p>
-{% else %}
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Recipes</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for recipe in all_recipes %}
+            <tr>
+                <td>
+                    <a href="{{ url_for('recipe_detail', id=recipe.id) }}">{{ recipe.title }} {{ recipe.id }}</a>
+                </td>
+                <td class="text-end">
+                    <a href="" class="text-secondary">Edit</a>
 
-<table>
-    <thead>
-    <tr>
-        <th>Recipes</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for recipe in all_recipes %}
-    <tr>
-        <td>
-            <a href="{{ url_for('recipe_detail', id=recipe.id) }}">{{ recipe.title }} {{ recipe.id }}</a>
-        </td>
-        <td>
-            <a href="">Edit</a>
-
-        </td>
-        <td>
-            <a href="{{ url_for('delete', id=recipe.id) }}">Delete</a>
-        </td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
-{% endif %}
-
-<a href="{{ url_for('add_recipe') }}">Add a recipe</a>
+                </td>
+                <td class="text-end">
+                    <a href="{{ url_for('delete', id=recipe.id) }}" class="text-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</div>
+<div class="row my-5">
+    <div class="col">
+        <a href="{{ url_for('add_recipe') }}">Add a recipe</a>
+    </div>
+</div>
 {% endblock %}
