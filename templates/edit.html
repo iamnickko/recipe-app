@@ -1,16 +1,33 @@
 {% extends "layout.html" %}
 {% block content %}
-
-<h1>test edit page</h1>
-
-<form action="" method="POST">
-  <label for="title">Title</label>
-  <input type="text" name="title" value="{{ recipe_to_edit.title }}">
-  <label for="ingredients">Ingredients</label>
-  <input type="text" name="ingredients" value="{{ recipe_to_edit.ingredients }}">
-  <label for="instructions">Instructions</label>
-  <textarea name="instructions">{{ recipe_to_edit.instructions }}</textarea>
-  <button type="submit" class="btn btn-primary">Update</button>
-</form>
+<div class="row my-5">
+    <div class="col">
+        <h1>test edit page</h1>
+    </div>
+</div>
+<div class="row my-5">
+    <div class="col">
+        <form action="" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="title" id="title" value="{{ recipe_to_edit.title }}" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="ingredients" class="form-label">Ingredients</label>
+                <textarea rows="7" name="ingredients" id="ingredients"
+                          class="form-control">{{ recipe_to_edit.ingredients }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="instructions" class="form-label">Instructions</label>
+                <textarea rows="7" name="instructions" id="instructions"
+                          class="form-control">{{ recipe_to_edit.instructions }}</textarea>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Update</button>
+<a href="{{ url_for('recipe_detail', id=recipe_to_edit.id) }}" class="small">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
 
 {% endblock %}

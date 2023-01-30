@@ -20,15 +20,15 @@
         <form action="" method="POST">
             <div class="mb-3">
                 <label for="title" class="form-label">Title:</label>
-                <input type="text" name="title" class="form-control">
+                <input type="text" name="title" id="title" class="form-control">
             </div>
             <div class="mb-3">
                 <label for="ingredients" class="form-label">Ingredients:</label>
-                <input type="text" name="ingredients" class="form-control">
+                <textarea rows="7" name="ingredients" id="ingredients" class="form-control"></textarea>
             </div>
             <div class="mb-3">
                 <label for="instructions" class="form-label">Instructions:</label>
-                <textarea rows="10" cols="40" name="instructions" class="form-control"></textarea>
+                <textarea id="instructions" rows="7" cols="40" name="instructions" class="form-control"></textarea>
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Submit</button>
