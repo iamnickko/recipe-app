@@ -52,6 +52,18 @@ def add_recipe():
     return render_template("add.html")
 
 
+@app.route("/edit/<int:id>", methods=["POST", "GET"])
+def edit_recipe(id):
+    recipe_to_edit = db.get_or_404(Recipe, id)
+    if request.method == "POST":
+        recipe_to_edit.title = request.form["title"]
+        recipe_to_edit.ingredients = request.form["ingredients"]
+        recipe_to_edit.instructions = request.form["instructions"]
+        db.session.commit()
+        return redirect(url_for("recipe_detail", id=id))
+    return render_template("edit.html", recipe_to_edit=recipe_to_edit)
+
+
 @app.route("/delete", methods=["GET", "POST"])
 def delete():
     recipe_id = request.args.get("id")
