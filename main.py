@@ -64,10 +64,9 @@ def edit_recipe(id):
     return render_template("edit.html", recipe_to_edit=recipe_to_edit)
 
 
-@app.route("/delete", methods=["GET", "POST"])
-def delete():
-    recipe_id = request.args.get("id")
-    recipe_to_delete = Recipe.query.get(recipe_id)
+@app.route("/delete/<int:id>", methods=["GET", "POST"])
+def delete(id):
+    recipe_to_delete = db.get_or_404(Recipe, id)
     db.session.delete(recipe_to_delete)
     db.session.commit()
     return redirect(url_for("home"))
